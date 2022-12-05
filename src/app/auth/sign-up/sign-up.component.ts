@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Employee } from 'src/app/model/employee.model';
 import { Manager } from 'src/app/model/manager.model';
+import { AuthService } from 'src/app/service/auth.service';
 import { ManagerService } from 'src/app/service/manager.service';
 
 @Component({
@@ -12,8 +15,10 @@ export class SignUpComponent implements OnInit {
   jobTitleArry: string[];
   managerArry: Manager[];
   signUpForm: FormGroup;
+  employee: Employee;
 
-  constructor(private managerService: ManagerService) { }
+  constructor(private managerService: ManagerService, private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.jobTitleArry= ['Developer',
@@ -40,7 +45,25 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignUp(){
-    console.log(this.signUpForm.value);
+    this.employee = {
+      name: this.signUpForm.value.name,
+      jobTitle: this.signUpForm.value.jobTitle,
+      managerId: this.signUpForm.value.managerId,
+      user: {
+        username: this.signUpForm.value.username,
+        password: this.signUpForm.value.password
+      }
+    };
+
+    this.authService.signup(this.employee).subscribe({
+      next: (data)=>{
+        //naviagate the User to Login
+        this.router.navigateByUrl('/');
+      },
+      error: (err)=>{
+        //display error message
+      }
+    });
   }
 
 }
