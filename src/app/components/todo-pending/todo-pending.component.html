@@ -1,0 +1,10 @@
+<h3>Pending Todos</h3>
+
+<p *ngFor="let t of todoArry">
+    <span *ngIf="t.completed == false">
+      Title: {{t.title}} <br />
+      From UserID: {{t.userId}} <br />
+      Status:
+      {{t.completed?"Completed":"Pending"}}
+    </span>
+</p>
