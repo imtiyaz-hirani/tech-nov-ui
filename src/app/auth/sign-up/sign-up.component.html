@@ -7,33 +7,33 @@
         <div class="card-body">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name">
+            <input type="text" class="form-control" placeholder="Enter your name">
           </div>
           <div class="mb-3">
               Job Title:
               <select class="form-control">
-                <option>Developer</option>
-                <option>Software Tester</option>
+                <option *ngFor="let j of jobTitleArry" value="{{j}}">
+                  {{j}}
+                </option>
               </select>
           </div>
           <div class="mb-3">
             Manager Name:
             <select class="form-control">
-              <option>Albus Dumbledore</option>
-              <option>Severus Snape</option>
+              <option *ngFor="let m of managerArry" value="{{m.id}}"> {{m.name}}</option>
             </select>
         </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email/Username</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="email" class="form-control"  placeholder="name@example.com">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleFormControlInput1">
+            <input type="password" class="form-control" >
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Re-Password</label>
-            <input type="password" class="form-control" id="exampleFormControlInput1">
+            <input type="password" class="form-control" >
           </div>
           <div class="mb-3">
               <input type="submit" class="btn btn-primary" value="Sign Up">
