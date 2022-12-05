@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Manager } from 'src/app/model/manager.model';
 import { ManagerService } from 'src/app/service/manager.service';
 
@@ -29,12 +29,12 @@ export class SignUpComponent implements OnInit {
     });
 
     this.signUpForm = new FormGroup({
-      name: new FormControl(''),
-      jobTitle: new FormControl(''),
-      managerId: new FormControl(''),
-      username: new FormControl(''),
-      password: new FormControl(''),
-      repassword: new FormControl('')
+      name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]),
+      jobTitle: new FormControl('', [Validators.required]),
+      managerId: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+      password: new FormControl('', [Validators.required,Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9@%_]+$/)]),
+      repassword: new FormControl('', [Validators.required])
     });
 
   }

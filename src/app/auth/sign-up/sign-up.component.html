@@ -10,6 +10,11 @@
             <label for="exampleFormControlInput1" class="form-label">Name</label>
             <input type="text" class="form-control" placeholder="Enter your name"
             formControlName="name">
+            <span class="error_msg" *ngIf="signUpForm.controls['name'].touched &&
+                        signUpForm.controls['name'].invalid">
+              <span *ngIf="signUpForm.controls['name'].errors['required']">Name is required</span>
+              <span *ngIf="signUpForm.controls['name'].errors['pattern']">Valid name is required</span>
+            </span>
           </div>
           <div class="mb-3">
               Job Title:
@@ -18,28 +23,49 @@
                   {{j}}
                 </option>
               </select>
+              <span class="error_msg" *ngIf="signUpForm.controls['jobTitle'].touched &&
+              signUpForm.controls['jobTitle'].invalid">
+                <span *ngIf="signUpForm.controls['jobTitle'].errors['required']">Select Job Title</span>
+               </span>
           </div>
           <div class="mb-3">
             Manager Name:
             <select class="form-control" formControlName="managerId">
               <option *ngFor="let m of managerArry" value="{{m.id}}"> {{m.name}}</option>
             </select>
+            <span class="error_msg" *ngIf="signUpForm.controls['managerId'].touched &&
+              signUpForm.controls['managerId'].invalid">
+              <span *ngIf="signUpForm.controls['managerId'].errors['required']">Select your manager</span>
+             </span>
         </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email/Username</label>
             <input type="email" class="form-control"  placeholder="name@example.com"
             formControlName="username">
+            <span class="error_msg" *ngIf="signUpForm.controls['username'].touched &&
+              signUpForm.controls['username'].invalid">
+              <span *ngIf="signUpForm.controls['username'].errors['required']">Username is required</span>
+              <span *ngIf="signUpForm.controls['username'].errors['pattern']">please enter valid email</span>
+            </span>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Password</label>
             <input type="password" class="form-control" formControlName="password">
+
+            <span class="error_msg" *ngIf="signUpForm.controls['password'].touched &&
+              signUpForm.controls['password'].invalid">
+              <span *ngIf="signUpForm.controls['password'].errors['required']">Password is required</span>
+              <span *ngIf="signUpForm.controls['password'].errors['pattern']">Password can have alphabets, digits @ _ #</span>
+              <span *ngIf="signUpForm.controls['password'].errors['minlength']">Password should be min 5 chars</span>
+              <span *ngIf="signUpForm.controls['password'].errors['maxlength']">Password should be max 15 chars</span>
+            </span>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Re-Password</label>
             <input type="password" class="form-control" formControlName="repassword">
           </div>
           <div class="mb-3">
-              <input type="submit" class="btn btn-primary" value="Sign Up">
+              <input type="submit" class="btn btn-primary" value="Sign Up" [disabled]="!signUpForm.valid">
           </div>
           <div class="mb-3">
             Already Registered? <a routerLink="/">Login Here</a>

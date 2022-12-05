@@ -6,3 +6,8 @@
 .signup-section{
   background-color: lightgray;
 }
+
+.error_msg{
+  color: red;
+  font-size: small;
+}
