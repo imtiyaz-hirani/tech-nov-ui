@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Manager } from 'src/app/model/manager.model';
 import { ManagerService } from 'src/app/service/manager.service';
 
@@ -10,6 +11,7 @@ import { ManagerService } from 'src/app/service/manager.service';
 export class SignUpComponent implements OnInit {
   jobTitleArry: string[];
   managerArry: Manager[];
+  signUpForm: FormGroup;
 
   constructor(private managerService: ManagerService) { }
 
@@ -18,12 +20,6 @@ export class SignUpComponent implements OnInit {
                         'Sr. Developer',
                         'Software Tester',
                         'Scrum Master'];
-     /*
-    this.jobTitleArry.push('Developer');
-    this.jobTitleArry.push('Sr. Developer');
-    this.jobTitleArry.push('Software Tester');
-    this.jobTitleArry.push('Scrum Master');
-    */
 
     this.managerService.getAllManagers().subscribe({
       next: (data)=>{
@@ -31,6 +27,20 @@ export class SignUpComponent implements OnInit {
       },
       error: ()=>{}
     });
+
+    this.signUpForm = new FormGroup({
+      name: new FormControl(''),
+      jobTitle: new FormControl(''),
+      managerId: new FormControl(''),
+      username: new FormControl(''),
+      password: new FormControl(''),
+      repassword: new FormControl('')
+    });
+
+  }
+
+  onSignUp(){
+    console.log(this.signUpForm.value);
   }
 
 }

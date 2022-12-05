@@ -1,4 +1,5 @@
 <div class="signup-section">
+  <form [formGroup]="signUpForm" (submit)="onSignUp()">
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4 signup">
@@ -7,11 +8,12 @@
         <div class="card-body">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input type="text" class="form-control" placeholder="Enter your name">
+            <input type="text" class="form-control" placeholder="Enter your name"
+            formControlName="name">
           </div>
           <div class="mb-3">
               Job Title:
-              <select class="form-control">
+              <select class="form-control" formControlName="jobTitle">
                 <option *ngFor="let j of jobTitleArry" value="{{j}}">
                   {{j}}
                 </option>
@@ -19,21 +21,22 @@
           </div>
           <div class="mb-3">
             Manager Name:
-            <select class="form-control">
+            <select class="form-control" formControlName="managerId">
               <option *ngFor="let m of managerArry" value="{{m.id}}"> {{m.name}}</option>
             </select>
         </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email/Username</label>
-            <input type="email" class="form-control"  placeholder="name@example.com">
+            <input type="email" class="form-control"  placeholder="name@example.com"
+            formControlName="username">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Password</label>
-            <input type="password" class="form-control" >
+            <input type="password" class="form-control" formControlName="password">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Re-Password</label>
-            <input type="password" class="form-control" >
+            <input type="password" class="form-control" formControlName="repassword">
           </div>
           <div class="mb-3">
               <input type="submit" class="btn btn-primary" value="Sign Up">
@@ -46,5 +49,6 @@
     </div>
     <div class="col-md-4"></div>
   </div>
+  </form>
 </div>
 
