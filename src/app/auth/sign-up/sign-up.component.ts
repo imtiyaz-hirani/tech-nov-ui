@@ -16,6 +16,7 @@ export class SignUpComponent implements OnInit {
   managerArry: Manager[];
   signUpForm: FormGroup;
   employee: Employee;
+  msg: string;
 
   constructor(private managerService: ManagerService, private authService: AuthService,
     private router: Router) { }
@@ -54,16 +55,23 @@ export class SignUpComponent implements OnInit {
         password: this.signUpForm.value.password
       }
     };
-
-    this.authService.signup(this.employee).subscribe({
-      next: (data)=>{
-        //naviagate the User to Login
-        this.router.navigateByUrl('/');
-      },
-      error: (err)=>{
-        //display error message
-      }
-    });
+    /* password is == repassword */
+    let repassword = this.signUpForm.value.repassword;
+    if(! (this.signUpForm.value.password == repassword) ){
+      this.msg = 'Passwords do not match';
+    }
+    else{
+      this.authService.signup(this.employee).subscribe({
+        next: (data)=>{
+          //naviagate the User to Login
+          this.authService.msg$.next('SignUp Success!!')
+          this.router.navigateByUrl('/');
+        },
+        error: (err)=>{
+          //display error message
+        }
+      });
+    }
   }
 
 }
