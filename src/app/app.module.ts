@@ -11,6 +11,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { PostComponent } from './components/post/post.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { ManagerComponent } from './components/manager/manager.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
     NavbarComponent,
     PostComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    EmployeeComponent,
+    ManagerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -10,8 +12,8 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent implements OnInit {
   msg: string;
   loginForm: FormGroup;
-
-  constructor(private authService: AuthService) { }
+  user :User;
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -33,7 +35,15 @@ export class LoginComponent implements OnInit {
     let token = window.btoa(username + ':' + password);
     this.authService.login(token).subscribe({
       next: (data)=>{
-        console.log(data);
+         this.user = data;
+         /* Check the role */
+         if(this.user.role == 'MANAGER'){
+            this.router.navigateByUrl('/manager');
+         }
+         else
+         if(this.user.role == 'EMPLOYEE'){
+            this.router.navigateByUrl('/employee');
+         }
       },
       error: (err)=>{
          this.msg = 'Invalid Credentials';
