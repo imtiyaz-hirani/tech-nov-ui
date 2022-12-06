@@ -36,6 +36,18 @@ export class LoginComponent implements OnInit {
     this.authService.login(token).subscribe({
       next: (data)=>{
          this.user = data;
+         /*
+          Save user details for login check
+          1. Cache Memory
+          2. Subjects
+         */
+
+         //Cache Memory
+         localStorage.setItem("username",this.user.username);
+         localStorage.setItem("role", this.user.role);
+         //Subject
+        this.authService.user$.next(this.user);
+
          /* Check the role */
          if(this.user.role == 'MANAGER'){
             this.router.navigateByUrl('/manager');

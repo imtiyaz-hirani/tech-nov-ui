@@ -11,6 +11,7 @@ import { User } from '../model/user.model';
 export class AuthService {
 
   msg$ = new BehaviorSubject('');
+  user$ = new BehaviorSubject<User>({});
   constructor(private http: HttpClient) { }
 
   signup(employee: Employee):Observable<any> {
