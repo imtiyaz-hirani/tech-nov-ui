@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export class Employee{
   name: string;
   jobTitle: string;
@@ -6,7 +8,4 @@ export class Employee{
 }
 
 
-export class User{
-  username: string;
-  password: string;
-}
+
