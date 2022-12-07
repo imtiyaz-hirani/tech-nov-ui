@@ -1,0 +1,16 @@
+.sidebar{
+  background-color: aliceblue;
+  margin-bottom: 0%;
+}
+
+.user-logo{
+  width: 30%;
+  height: 30%;
+  display: block;
+  margin-left: 33%;
+}
+
+.welcome-msg{
+  display: block;
+  margin-left: 20%;
+}

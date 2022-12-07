@@ -1,1 +1,25 @@
-<h1>Employee Dashboard</h1>
+<div>
+  <div class="row">
+      <div class="col-md-3 sidebar">
+        <div >
+            <img src="../../../assets/images/user.png" class="user-logo">
+
+            <span class="welcome-msg"> Welcome User-name </span>
+        </div>
+        <div>
+          <br>
+          <ul >
+            <li><a class="list-group-item" routerLink="/employee/generate-ticket">Generate Ticket</a> </li>
+            <li>  <a class="list-group-item" routerLink="/employee/apply-leave">Apply Leave</a>  </li>
+            <li> <a class="list-group-item" routerLink="/employee/ticket-list">View Tickets</a>  </li>
+            <li> <a class="list-group-item" routerLink="/employee/leave-list">View Leaves</a>  </li>
+
+          </ul>
+        </div>
+
+      </div>
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>

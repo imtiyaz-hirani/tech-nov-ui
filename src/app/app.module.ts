@@ -13,6 +13,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ManagerComponent } from './components/manager/manager.component';
+import { ProfileComponent } from './components/employee/profile/profile.component';
+import { GenerateTicketComponent } from './components/employee/generate-ticket/generate-ticket.component';
+import { ApplyLeaveComponent } from './components/employee/apply-leave/apply-leave.component';
+import { ViewTicketsComponent } from './components/employee/view-tickets/view-tickets.component';
+import { ViewLeavesComponent } from './components/employee/view-leaves/view-leaves.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,13 @@ import { ManagerComponent } from './components/manager/manager.component';
     LoginComponent,
     SignUpComponent,
     EmployeeComponent,
-    ManagerComponent
+    ManagerComponent,
+    ProfileComponent,
+    GenerateTicketComponent,
+    ApplyLeaveComponent,
+    ViewTicketsComponent,
+    ViewLeavesComponent
+
   ],
   imports: [
     BrowserModule,
