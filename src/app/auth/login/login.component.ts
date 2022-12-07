@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
          //Cache Memory
          localStorage.setItem("username",this.user.username);
          localStorage.setItem("role", this.user.role);
+         localStorage.setItem("token", token);
          //Subject
         this.authService.user$.next(this.user);
 
