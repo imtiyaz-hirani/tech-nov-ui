@@ -18,6 +18,8 @@ import { GenerateTicketComponent } from './components/employee/generate-ticket/g
 import { ApplyLeaveComponent } from './components/employee/apply-leave/apply-leave.component';
 import { ViewTicketsComponent } from './components/employee/view-tickets/view-tickets.component';
 import { ViewLeavesComponent } from './components/employee/view-leaves/view-leaves.component';
+import { ApplyComponent } from './loan/components/apply/apply.component';
+import { ApplyFormComponent } from './loan/components/apply-form/apply-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ViewLeavesComponent } from './components/employee/view-leaves/view-leav
     GenerateTicketComponent,
     ApplyLeaveComponent,
     ViewTicketsComponent,
-    ViewLeavesComponent
+    ViewLeavesComponent,
+    ApplyComponent,
+    ApplyFormComponent
 
   ],
   imports: [

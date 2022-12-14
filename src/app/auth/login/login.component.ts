@@ -49,7 +49,12 @@ export class LoginComponent implements OnInit {
          //Subject
         this.authService.user$.next(this.user);
 
+
          /* Check the role */
+         if(this.user.role == 'AH'){
+            this.router.navigateByUrl('/apply-loan');
+          }
+        else
          if(this.user.role == 'MANAGER'){
             this.router.navigateByUrl('/manager');
          }

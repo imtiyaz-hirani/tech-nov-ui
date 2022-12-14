@@ -13,7 +13,7 @@ export class EmployeeService {
 
   getEmployeeInfo(token: string): Observable<Employee> {
     let header = {
-      'Authorization' : 'Basic ' + token
+      'Authorization' : 'Basic ' + localStorage.getItem('token')
     }
     return this.http.get<Employee>(environment.serverUrl + '/employee/details', {headers: header});
   }

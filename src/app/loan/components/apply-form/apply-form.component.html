@@ -1,0 +1,26 @@
+<h1>Enter Loan Info</h1>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form [formGroup]="loanGroup" (submit)="onLoanSubmit()">
+            <div class="mb-3">
+                <label> Loan Type:  </label>
+                <input type="text" class="form-control" readonly
+                     formControlName="type">
+            </div>
+            <div class="mb-3">
+                <label> Enter Loan Amount: </label>
+                <input type="text" class="form-control" formControlName="amount">
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary" value="Apply Loan">
+            </div>
+
+
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<hr>
+<h3 *ngIf="amount">Amount Sanctioned: {{amount.sanctionAmount}}</h3>
