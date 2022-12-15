@@ -10,23 +10,24 @@ import { ViewTicketsComponent } from './components/employee/view-tickets/view-ti
 import { ManagerComponent } from './components/manager/manager.component';
 import { ApplyFormComponent } from './loan/components/apply-form/apply-form.component';
 import { ApplyComponent } from './loan/components/apply/apply.component';
+import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
   { path:'', component: LoginComponent },
  // { path:'', component: ApplyComponent },
- { path:'apply-loan', component: ApplyComponent, children:[
+    { path:'apply-loan', component: ApplyComponent, canActivate:[AuthGuardService]  ,   children:[
       { path:'form', component: ApplyFormComponent }
     ]
-  },
- { path:'sign-up', component: SignUpComponent },
-  { path:'employee', component: EmployeeComponent, children:[
-    { path:'generate-ticket', component: GenerateTicketComponent },
-    { path:'apply-leave', component: ApplyLeaveComponent },
-    { path:'ticket-list', component: ViewTicketsComponent },
-    { path:'leave-list', component: ViewLeavesComponent }
+    },
+    { path:'sign-up', component: SignUpComponent },
+    { path:'employee', component: EmployeeComponent, canActivate:[AuthGuardService], children:[
+      { path:'generate-ticket', component: GenerateTicketComponent },
+      { path:'apply-leave', component: ApplyLeaveComponent },
+      { path:'ticket-list', component: ViewTicketsComponent },
+      { path:'leave-list', component: ViewLeavesComponent }
     ]
   },
-  { path:'manager', component: ManagerComponent }
+  { path:'manager', component: ManagerComponent,canActivate:[AuthGuardService] }
 ];
 
 @NgModule({
